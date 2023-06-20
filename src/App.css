@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+.search {
+  display: flex;
+  justify-content: space-around;
+}
+.table-name,
+.product {
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px black;
+}
+.table {
+  display: flex;
+  justify-content: center;
+}
+.box {
+  border: black ridge 1px;
+  border-radius: 10px;
+  margin: 3px;
+  width: 20rem;
+  padding-left: 10px;
+  justify-content: space-around;
+}
+.price {
+  justify-content: flex-end;
+  display: flex;
+}
+.name1 {
+  margin-left: 15px;
+}
+.price1 {
+  margin-right: 15px;
+}
