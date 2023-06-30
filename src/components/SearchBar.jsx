@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const SearchBar = () => {
+const SearchBar = ({ products }) => {
   const [searchInput, setSearchInput] = useState('');
   const [inStock, setInStock] = useState(false);
   const handleInStock = ({ target }) => {
@@ -10,6 +10,17 @@ const SearchBar = () => {
   const handleSearch = (event) => {
     setSearchInput(event.target.value);
   };
+
+  const filteredProducts = products.filter((product) => {
+    if (inStock) {
+      return (
+        product.name.toLowerCase().includes(searchInput.toLowerCase()) &&
+        product.inStock
+      );
+    } else {
+      return product.name.toLowerCase(searchInput.toLowerCase());
+    }
+  });
 
   /* const handleChange = (event) => {
     const results = products.filter((product) => {
@@ -29,7 +40,11 @@ const SearchBar = () => {
         <h2>Search</h2>
         <p className="bar">
           {' '}
-          <label></label>
+          <label>
+            {filteredProducts.map((product) => (
+              <li key={product.id}>{product.name}</li>
+            ))}
+          </label>
           <input
             type="text"
             name="searchInput"
@@ -40,15 +55,22 @@ const SearchBar = () => {
 
         <p>
           {' '}
-          <label>Only show products in stock </label>
-          <input
-            type="checkbox"
-            name="inStock"
-            checked={inStock}
-            onChange={handleInStock}
-          ></input>
+          <label>
+            Only show products in stock
+            <input
+              type="checkbox"
+              name="inStock"
+              checked={inStock}
+              onChange={handleInStock}
+            ></input>
+          </label>
         </p>
       </form>
+      {/* <ul>
+        {filteredProducts.map((product) => (
+          <li key={product.id}>{product.name}</li>
+        ))}
+      </ul> */}
     </div>
   );
 };

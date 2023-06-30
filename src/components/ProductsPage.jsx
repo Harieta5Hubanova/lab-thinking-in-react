@@ -22,7 +22,7 @@ function ProductsPage() {
     <div>
       <h1>IronStore</h1>
 
-      <SearchBar filteredProducts={searchHandler} />
+      <SearchBar products={products} />
 
       <ProductTable products={products} />
     </div>
